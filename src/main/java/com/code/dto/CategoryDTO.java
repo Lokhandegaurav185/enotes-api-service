@@ -1,0 +1,22 @@
+package com.code.dto;
+
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class CategoryDTO {
+	private Integer id;
+	private String name;
+	private String description;
+	private Boolean isActive;
+	private Integer createdBy;
+	private Date createdOn;
+	private Integer updateBy;
+	private Date updateOn;
+}
