@@ -12,11 +12,18 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryDTO {
 	private Integer id;
+	
 	private String name;
+	
 	private String description;
+	
 	private Boolean isActive;
+	
 	private Integer createdBy;
+	
 	private Date createdOn;
+	
 	private Integer updateBy;
+	
 	private Date updateOn;
 }
