@@ -43,9 +43,10 @@ public class CategoryServiceImple implements CategoryService{
 		List<CategoryDTO> categoryDTOList = getAllCat.stream().map(cat->mapper.map(cat, CategoryDTO.class)).toList();
 		return categoryDTOList	;
 	}
+	
 	public List<CategoryResponse> getActiveCategory() {
-		List<Category> getAllCat = categoryRepository.findAll();
-		List<CategoryResponse> categoryDTOList =  getAllCat.stream().map(cat->mapper.map(cat, CategoryResponse.class)).toList();
+		List<Category> categories = categoryRepository.findByIsActiveTrue();
+		List<CategoryResponse> categoryDTOList =  categories.stream().map(cat->mapper.map(cat, CategoryResponse.class)).toList();
 		return	categoryDTOList;
 	}
 
