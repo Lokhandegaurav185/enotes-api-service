@@ -14,6 +14,7 @@ import com.code.dto.CategoryResponse;
 import com.code.entity.Category;
 import com.code.respository.CategoryRepository;
 import com.code.services.CategoryService;
+import com.code.validation.Validation;
 
 @Service
 public class CategoryServiceImple implements CategoryService{
@@ -22,13 +23,16 @@ public class CategoryServiceImple implements CategoryService{
 	private CategoryRepository categoryRepository;
 	@Autowired
 	private ModelMapper mapper;
+	@Autowired
+	private Validation validation;
+	
 	private Optional<Category>  findbyId;
 	
 	public Boolean saveCategory(CategoryDTO categoryDTO) {
-//		Category category = new Category();
-//		category.setName(categoryDTO.getName());
-//		category.setDescription(categoryDTO.getDescription());
-//		category.setIsActive(categoryDTO.getIsActive());
+		
+		//check validation first 
+		validation.categoryValidation(categoryDTO);
+		
 		Category category = mapper.map(categoryDTO, Category.class);
 		
 		if(ObjectUtils.isEmpty(category.getId())) {

@@ -17,4 +17,9 @@ public class GlobalExceptionHandler{
 	public ResponseEntity<?> handleResourceNotException(Exception e){
 		return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
 	}
+	
+	@ExceptionHandler(DtoValidationException.class)
+	public ResponseEntity<?> handleDtoValidationException(DtoValidationException e){
+		return new ResponseEntity<>(e.getErrors(),HttpStatus.BAD_REQUEST);
+	}
 }
