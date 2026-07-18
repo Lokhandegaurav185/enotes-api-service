@@ -12,6 +12,7 @@ import org.springframework.util.ObjectUtils;
 import com.code.dto.CategoryDTO;
 import com.code.dto.CategoryResponse;
 import com.code.entity.Category;
+import com.code.exception.ExistDataException;
 import com.code.respository.CategoryRepository;
 import com.code.services.CategoryService;
 import com.code.validation.Validation;
@@ -32,6 +33,13 @@ public class CategoryServiceImple implements CategoryService{
 		
 		//check validation first 
 		validation.categoryValidation(categoryDTO);
+		
+		//check exist category or not
+		Boolean exists = categoryRepository.existsByName(categoryDTO.getName().trim());
+		
+		if(exists) {
+			throw new ExistDataException("Category Already Exist");
+		}
 		
 		Category category = mapper.map(categoryDTO, Category.class);
 		
