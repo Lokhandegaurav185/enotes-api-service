@@ -1,6 +1,9 @@
 package com.code.dto;
 
 import java.util.Date;
+
+import com.code.entity.FileDetails;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +31,9 @@ public class NotesDTO {
 	
 	private Date updateOn;
 	
+	private FileDetails details;
+	
+	
 	@AllArgsConstructor
 	@NoArgsConstructor
 	@Getter
@@ -36,5 +42,18 @@ public class NotesDTO {
 		private Integer id;
 		
 		private String name;
+	}
+	
+	@AllArgsConstructor
+	@NoArgsConstructor
+	@Getter
+	@Setter
+	public static class FileDetails{
+		private Integer id;
+
+		private String originalFileName;
+		
+		private String displayFileName;
+		
 	}
 }
