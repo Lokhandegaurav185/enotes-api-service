@@ -1,4 +1,4 @@
-package com.code.validation;
+package com.code.util;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
