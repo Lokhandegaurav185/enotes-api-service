@@ -1,7 +1,9 @@
 package com.code.services.impl;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.code.dto.NotesDTO;
@@ -123,6 +126,20 @@ public class NotesServiceImple implements NotesServices{
 	public List<NotesDTO> getAllNotes() {
 		return notesRepository.findAll().stream()
 				.map(note -> mapper.map(note, NotesDTO.class)).toList();
+	}
+
+
+	@Override
+	public byte[] downloadFile(FileDetails details) throws Exception {
+		
+		InputStream io = new FileInputStream(details.getPath());
+		return StreamUtils.copyToByteArray(io);
+	}
+	
+	public FileDetails getFileDetails(Integer id) throws Exception {
+		FileDetails  fileDtls = fileRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("file not found with this id"));
+		return fileDtls;
+		
 	}
 
 }

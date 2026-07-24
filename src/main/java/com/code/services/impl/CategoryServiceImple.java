@@ -15,7 +15,7 @@ import com.code.entity.Category;
 import com.code.exception.ExistDataException;
 import com.code.respository.CategoryRepository;
 import com.code.services.CategoryService;
-import com.code.validation.Validation;
+import com.code.util.Validation;
 
 @Service
 public class CategoryServiceImple implements CategoryService{

@@ -20,7 +20,7 @@ import com.code.dto.CategoryDTO;
 import com.code.dto.CategoryResponse;
 import com.code.entity.Category;
 import com.code.services.CategoryService;
-import com.code.validation.CommonGenericResponseUtil;
+import com.code.util.CommonGenericResponseUtil;
 
 @RestController
 @RequestMapping("/api/v1/category")

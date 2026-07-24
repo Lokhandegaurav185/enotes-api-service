@@ -1,12 +1,14 @@
 package com.code.exception;
 
+import java.io.FileNotFoundException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.code.validation.CommonGenericResponseUtil;
+import com.code.util.CommonGenericResponseUtil;
 
 @ControllerAdvice
 public class GlobalExceptionHandler{
@@ -38,6 +40,12 @@ public class GlobalExceptionHandler{
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<?> handleMessageNotReadableException(HttpMessageNotReadableException e){
 		return CommonGenericResponseUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.BAD_REQUEST);
+//		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(FileNotFoundException.class)
+	public ResponseEntity<?> handleFileNotFoundException(FileNotFoundException e){
+		return CommonGenericResponseUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.NOT_FOUND);
 //		return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
 	}
 }
