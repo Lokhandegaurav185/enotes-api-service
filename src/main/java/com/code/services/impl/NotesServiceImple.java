@@ -5,13 +5,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
-import org.jspecify.annotations.Nullable;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,12 +53,18 @@ public class NotesServiceImple implements NotesServices{
 	
 	@Value("${file.upload.path}")
 	private String uploadPath;
+
+	private Optional<Notes> byId;
 	
 	
 	public Boolean saveNotes(String notes, MultipartFile file) throws Exception {
 		
 		ObjectMapper ob  = new ObjectMapper();
 		NotesDTO notesDto = ob.readValue(notes, NotesDTO.class);
+		
+		if(!ObjectUtils.isEmpty(notesDto.getId())) {
+			updateNote(notesDto,file);
+		}
 		//validation
 		checkCategoryExist(notesDto.getCategory());
 		//fileDetails
@@ -68,7 +74,10 @@ public class NotesServiceImple implements NotesServices{
 			notesMap.setFileDetails(fileDtls);
 		}
 		else {
-			notesMap.setFileDetails(null);
+			if(ObjectUtils.isEmpty(notesDto.getId())) {
+				notesMap.setFileDetails(null);
+			}
+			
 		}
 		
 		Notes saveNotes = notesRepository.save(notesMap);
@@ -76,6 +85,15 @@ public class NotesServiceImple implements NotesServices{
 			return true;
 		}
 		return false;
+	}
+
+
+	private void updateNote(NotesDTO notesDto, MultipartFile file) throws Exception {
+		Notes existNotes = notesRepository.findById(notesDto.getId())
+				.orElseThrow(()->new ResourceNotFoundException("Invalid notes id"));
+		if(ObjectUtils.isEmpty(file)) {
+			notesDto.setDetails(mapper.map(existNotes.getFileDetails(),com.code.dto.NotesDTO.FileDetails.class));
+		}
 	}
 
 
