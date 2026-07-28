@@ -46,7 +46,7 @@ public class NotesController {
 		
 		HttpHeaders headers = new HttpHeaders();
 		String contentType=CommonGenericResponseUtil.getContentType(fileDetails.getOriginalFileName());
-		headers.setContentType(MediaType.IMAGE_PNG);//parseMediaType(contentType)
+		headers.setContentType(MediaType.parseMediaType(contentType));//parseMediaType(contentType)
 		headers.setContentDispositionFormData("attachment",fileDetails.getOriginalFileName());
 		return ResponseEntity.ok().headers(headers).body(downloadFile);
 	}
