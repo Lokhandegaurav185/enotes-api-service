@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 
 import java.nio.file.Paths;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -39,6 +40,8 @@ import tools.jackson.databind.ObjectMapper;
 @Service
 public class NotesServiceImple implements NotesServices{
 
+	
+
 	@Autowired
 	private NotesRepository notesRepository;
 	
@@ -61,7 +64,8 @@ public class NotesServiceImple implements NotesServices{
 		
 		ObjectMapper ob  = new ObjectMapper();
 		NotesDTO notesDto = ob.readValue(notes, NotesDTO.class);
-		
+		notesDto.setIsDeleted(false);
+		notesDto.setDeletedOn(null);
 		if(!ObjectUtils.isEmpty(notesDto.getId())) {
 			updateNote(notesDto,file);
 		}
@@ -168,7 +172,7 @@ public class NotesServiceImple implements NotesServices{
 		
 		Pageable pageable = PageRequest.of(pageNo,pageSize);
 		
-		Page<Notes> pageNotes = notesRepository.findByCreatedBy(userId,pageable);
+		Page<Notes> pageNotes = notesRepository.findByCreatedByAndIsDeletedFalse(userId,pageable);
 		
 		List<NotesDTO> notesDto = pageNotes.get().map(n -> mapper.map(n, NotesDTO.class)).toList();
 		
@@ -182,6 +186,31 @@ public class NotesServiceImple implements NotesServices{
 				.isLast(pageNotes.isLast())
 				.build();
 		return notesResponse;
+	}
+	
+	public void softDeleteNotes(Integer id) throws Exception {
+		Notes notes = notesRepository.findById(id)
+		  .orElseThrow(()->new ResourceNotFoundException("Notes not found"));
+		
+		notes.setIsDeleted(true);
+		notes.setDeletedOn(new Date());
+		notesRepository.save(notes); 
+	}
+	
+	public void restoreNotes(Integer id) throws Exception {
+		Notes notes = notesRepository.findById(id)
+				.orElseThrow(()->new ResourceNotFoundException("Notes not found"));
+		
+		notes.setIsDeleted(false);
+		notes.setDeletedOn(null);
+		notesRepository.save(notes); 
+	}
+
+
+	public List<NotesDTO> getUserRecycleBinNotes(Integer userId) {
+		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId);
+		List<NotesDTO> NotesDtoList = recycleNotes.stream().map(n->mapper.map(n, NotesDTO.class)).toList();
+		return NotesDtoList;
 	}
 
 }

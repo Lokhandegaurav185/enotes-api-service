@@ -1,6 +1,8 @@
 package com.code.entity;
 
 
+import java.util.Date;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.code.dto.CategoryDTO;
@@ -37,4 +39,8 @@ public class Notes extends BaseModel{
 	
 	@ManyToOne
 	private FileDetails fileDetails;
+	
+	private Boolean isDeleted;
+	
+	private Date deletedOn;
 }

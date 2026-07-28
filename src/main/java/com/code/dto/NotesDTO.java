@@ -31,6 +31,10 @@ public class NotesDTO {
 	
 	private Date updateOn;
 	
+	private Boolean isDeleted;
+	
+	private Date deletedOn;
+	
 	private FileDetails details;
 	
 	
