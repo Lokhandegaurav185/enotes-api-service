@@ -1,5 +1,6 @@
 package com.code.dto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import com.code.entity.FileDetails;
@@ -33,7 +34,7 @@ public class NotesDTO {
 	
 	private Boolean isDeleted;
 	
-	private Date deletedOn;
+	private LocalDateTime deletedOn;
 	
 	private FileDetails details;
 	

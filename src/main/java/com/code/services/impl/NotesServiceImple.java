@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +21,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,7 +42,6 @@ import tools.jackson.databind.ObjectMapper;
 @Service
 public class NotesServiceImple implements NotesServices{
 
-	
 
 	@Autowired
 	private NotesRepository notesRepository;
@@ -193,7 +194,7 @@ public class NotesServiceImple implements NotesServices{
 		  .orElseThrow(()->new ResourceNotFoundException("Notes not found"));
 		
 		notes.setIsDeleted(true);
-		notes.setDeletedOn(new Date());
+		notes.setDeletedOn(LocalDateTime.now());
 		notesRepository.save(notes); 
 	}
 	
@@ -211,6 +212,24 @@ public class NotesServiceImple implements NotesServices{
 		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId);
 		List<NotesDTO> NotesDtoList = recycleNotes.stream().map(n->mapper.map(n, NotesDTO.class)).toList();
 		return NotesDtoList;
+	}
+	
+	public void hardDeleteNotes(Integer id) throws Exception {
+		Notes DeletedNotes = notesRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Notes not deleted"));
+		if(DeletedNotes.getIsDeleted()) {
+			notesRepository.delete(DeletedNotes);
+		}
+		else {
+			throw new IllegalArgumentException("You cannot deleted directly");
+		}
+	}
+
+
+	public void deleteRecycleBin(int userId) {
+		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId);
+		if(!CollectionUtils.isEmpty(recycleNotes)) {
+			notesRepository.deleteAll(recycleNotes);
+		}
 	}
 
 }
