@@ -261,4 +261,22 @@ public class NotesServiceImple implements NotesServices{
 		return favoriteNotes.stream().map(fn->mapper.map(fn, FavoritesNotesDTO.class)).toList();
 	}
 
+
+	@Override
+	public Boolean copyNotes(Integer id) throws Exception {
+		Notes notes = notesRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Notes id invalid"));
+		Notes copyNote= notes.builder()
+		.title(notes.getTitle())
+		.description(notes.getDescription())
+		.category(notes.getCategory())
+		.isDeleted(false)
+		.fileDetails(null)
+		.build();
+		Notes save = notesRepository.save(copyNote);
+		if(!ObjectUtils.isEmpty(save)) {
+			return true;
+		}
+		return false;
+	}
+
 }

@@ -134,4 +134,14 @@ public class NotesController {
 		}
 		return CommonGenericResponseUtil.createBuildResponse(userFavoriteNotes, HttpStatus.OK);
 	}
+	
+	@GetMapping("/copyNote/{id}")
+	public ResponseEntity<?> copyNote(@PathVariable Integer id) throws Exception{
+		Boolean copyNote=notesServices.copyNotes(id);
+		if(copyNote) {
+			return  CommonGenericResponseUtil.createBuildResponseMessage("Copy success", HttpStatus.OK);
+		}
+		return CommonGenericResponseUtil.createBuildResponseMessage("Copy Failed", HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
 }
