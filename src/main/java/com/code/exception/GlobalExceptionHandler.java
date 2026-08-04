@@ -25,6 +25,12 @@ public class GlobalExceptionHandler{
 //		return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
 	}
 	
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<?> handleIllegalArgumentException(Exception e){
+		return CommonGenericResponseUtil.createErrorResponseMessage(e.getMessage(), HttpStatus.NOT_FOUND);
+//		return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+	}
+	
 	@ExceptionHandler(DtoValidationException.class)
 	public ResponseEntity<?> handleDtoValidationException(DtoValidationException e){
 		return CommonGenericResponseUtil.createErrorResponse(e.getErrors(), HttpStatus.BAD_REQUEST);
