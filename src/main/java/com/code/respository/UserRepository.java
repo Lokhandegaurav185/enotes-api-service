@@ -6,4 +6,8 @@ import com.code.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+	Boolean existsByEmail(String email);
+
+	Boolean existsByMobNo(String mobNo);
+
 }

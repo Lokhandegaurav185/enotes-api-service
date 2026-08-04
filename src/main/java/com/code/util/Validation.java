@@ -16,13 +16,17 @@ import com.code.dto.TodoDTO.StatusDto;
 import com.code.dto.UserDTO;
 import com.code.enums.TodoStatus;
 import com.code.exception.DtoValidationException;
+import com.code.exception.ExistDataException;
 import com.code.exception.ResourceNotFoundException;
 import com.code.respository.RoleRepository;
+import com.code.respository.UserRepository;
 
 @Component
 public class Validation {
 	@Autowired
 	private RoleRepository roleRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	public void categoryValidation(CategoryDTO categoryDTO) {
 		Map<String, Object> error  = new LinkedHashMap<>();
@@ -85,8 +89,20 @@ public class Validation {
 		if(!StringUtils.hasText(userDto.getEmail()) || !userDto.getEmail().matches(Contants.EMAIL_REGEX)) {
 			throw new IllegalArgumentException("email is invalid");
 		}
+		else {
+			Boolean existsEmail=userRepository.existsByEmail(userDto.getEmail());
+			if(existsEmail) {
+				throw new ExistDataException("Email is already exists");
+			}
+		}
 		if(!StringUtils.hasText(userDto.getMobNo()) || !userDto.getMobNo().matches(Contants.MOBNO_REGEX)) {
 			throw new IllegalArgumentException("mobno is invalid");
+		}
+		else {
+			Boolean existsMobNo=userRepository.existsByMobNo(userDto.getMobNo());
+			if(existsMobNo) {
+				throw new ExistDataException("Mobile no is already exists");
+			}
 		}
 		
 		if(CollectionUtils.isEmpty(userDto.getRoles())) {
