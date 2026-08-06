@@ -13,16 +13,20 @@ import com.code.dto.UserDTO;
 import com.code.services.UserService;
 import com.code.util.CommonGenericResponseUtil;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
-@RequestMapping("/api/v1/user")
+@RequestMapping("/api/v1/auth")
 public class UserAuthController {
 	
 	@Autowired
 	private UserService userService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<?> register(@RequestBody UserDTO userDto ) throws Exception{
-		Boolean save = userService.register(userDto);
+	public ResponseEntity<?> register(@RequestBody UserDTO userDto, HttpServletRequest request) throws Exception{
+		String url = CommonGenericResponseUtil.getUrl(request);
+		Boolean save = userService.register(userDto,url);
+		
 		if(save) {
 			return CommonGenericResponseUtil.createBuildResponseMessage("user register", HttpStatus.CREATED);
 		}
