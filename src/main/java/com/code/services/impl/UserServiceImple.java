@@ -5,10 +5,17 @@ import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import com.code.config.security.CustomUserDetails;
 import com.code.dto.EmailRequest;
+import com.code.dto.LoginRequest;
+import com.code.dto.LoginResponse;
 import com.code.dto.UserDTO;
 import com.code.entity.AccountStatus;
 import com.code.entity.Role;
@@ -35,6 +42,12 @@ public class UserServiceImple implements UserService{
 	@Autowired
 	private EmailService emailService;
 	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
 	public Boolean register(UserDTO userDTO, String url) throws Exception {
 		//check validation
 		validation.userValidation(userDTO);
@@ -46,6 +59,7 @@ public class UserServiceImple implements UserService{
 								.verificationCode(UUID.randomUUID().toString())
 								.build();
 		user.setStatus(status);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		User save = userRepository.save(user);
 		if(!ObjectUtils.isEmpty(save)) {
 			emailSend(save,url);
@@ -77,6 +91,21 @@ public class UserServiceImple implements UserService{
 		List<Integer> requestId = userDTO.getRoles().stream().map(r -> r.getId()).toList();
 		List<Role> roles = roleRepository.findAllById(requestId);
 		user.setRoles(roles);
+	}
+
+	@Override
+	public LoginResponse login(LoginRequest loginRequest) {
+		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+		if(authenticate.isAuthenticated()) {
+			CustomUserDetails customUserDetails = (CustomUserDetails)authenticate.getPrincipal();
+			String token = "trdsvcerfdsakzccd";
+			LoginResponse loginResponse = LoginResponse.builder()
+					.user(mapper.map(customUserDetails.getUser(), UserDTO.class))
+					.token(token)
+					.build();
+			return loginResponse;
+		}
+		return null;
 	}
 
 }
