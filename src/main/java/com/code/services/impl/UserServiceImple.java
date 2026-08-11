@@ -22,6 +22,7 @@ import com.code.entity.Role;
 import com.code.entity.User;
 import com.code.respository.RoleRepository;
 import com.code.respository.UserRepository;
+import com.code.services.JwtService;
 import com.code.services.UserService;
 import com.code.util.Validation;
 @Service
@@ -47,6 +48,9 @@ public class UserServiceImple implements UserService{
 	
 	@Autowired
 	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private JwtService jwtService;
 	
 	public Boolean register(UserDTO userDTO, String url) throws Exception {
 		//check validation
@@ -98,13 +102,13 @@ public class UserServiceImple implements UserService{
 		Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 		if(authenticate.isAuthenticated()) {
 			CustomUserDetails customUserDetails = (CustomUserDetails)authenticate.getPrincipal();
-			String token = "trdsvcerfdsakzccd";
+			String token = jwtService.generateToken(customUserDetails.getUser());
 			LoginResponse loginResponse = LoginResponse.builder()
 					.user(mapper.map(customUserDetails.getUser(), UserDTO.class))
 					.token(token)
 					.build();
 			return loginResponse;
-		}
+		}	
 		return null;
 	}
 
