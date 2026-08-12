@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +30,7 @@ public class CategoryController {
 	public CategoryService categoryService;
 	
 	@PostMapping("/saveCategory")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> saveCategory(@RequestBody CategoryDTO categoryDTO){
 		Boolean saveCategory=categoryService.saveCategory(categoryDTO);
 		if(saveCategory) {
@@ -42,6 +44,7 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/getAllCategory")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getAllCategory(){
 		List<CategoryDTO> allCategory = categoryService.getAllCategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
@@ -54,6 +57,7 @@ public class CategoryController {
 	}
 	
 	@GetMapping("/active-category")
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	public ResponseEntity<?> getActiveCategory(){
 		List<CategoryResponse> allCategory = categoryService.getActiveCategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
@@ -65,6 +69,7 @@ public class CategoryController {
 		}
 	}
 	@GetMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> getCategoryByID(@PathVariable Integer id){
 		CategoryDTO categoryDTO=categoryService.getCategoryByID(id);
 		if(ObjectUtils.isEmpty(categoryDTO)) {
@@ -76,6 +81,7 @@ public class CategoryController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> deleteCategoryByID(@PathVariable Integer id){
 		boolean deleted=categoryService.deleteCategoryByID(id);
 		if(deleted) {
