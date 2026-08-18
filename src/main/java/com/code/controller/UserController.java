@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.code.dto.PasswordChangeRequest;
 import com.code.dto.UserDTO;
 import com.code.dto.UserResponse;
 import com.code.entity.User;
+import com.code.services.UserService;
 import com.code.util.CommonGenericResponseUtil;
 
 @RestController
@@ -22,10 +24,19 @@ public class UserController {
 	@Autowired
 	private ModelMapper mapper;
 	
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping("/profile")
-	public ResponseEntity<?> register(){
+	public ResponseEntity<?> getUserProfile(){
 		User loggedInUser = CommonGenericResponseUtil.getLoggedInUser();
 		UserResponse userResponse=mapper.map(loggedInUser, UserResponse.class);
 		return CommonGenericResponseUtil.createBuildResponse(userResponse, HttpStatus.OK);
+	}
+	
+	@PostMapping("/changePassword")
+	public ResponseEntity<?> changePassword(@RequestBody PasswordChangeRequest passwordRequest){
+		userService.changePassword(passwordRequest);
+		return CommonGenericResponseUtil.createBuildResponseMessage("Change Password Successful", HttpStatus.OK);
 	}		
 }

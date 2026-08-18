@@ -29,7 +29,7 @@ public class UserResponse {
 	
 	private String mobNo;
 	
-	private StatusDto statusDto;
+	private StatusDto status;
 	
 	List<RoleDto> roles;
 	
@@ -52,6 +52,6 @@ public class UserResponse {
 	public static class StatusDto{
 		private Integer id;
 		
-		private String name;
+		private Boolean isActive;
 	}
 }

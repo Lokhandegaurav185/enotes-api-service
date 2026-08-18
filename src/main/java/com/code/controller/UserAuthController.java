@@ -14,7 +14,7 @@ import com.code.dto.LoginRequest;
 import com.code.dto.LoginResponse;
 import com.code.dto.TodoDTO;
 import com.code.dto.UserDTO;
-import com.code.services.UserService;
+import com.code.services.AuthService;
 import com.code.util.CommonGenericResponseUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,12 +24,12 @@ import jakarta.servlet.http.HttpServletRequest;
 public class UserAuthController {
 	
 	@Autowired
-	private UserService userService;
+	private AuthService authService;
 	
 	@PostMapping("/save")
 	public ResponseEntity<?> register(@RequestBody UserDTO userDto, HttpServletRequest request) throws Exception{
 		String url = CommonGenericResponseUtil.getUrl(request);
-		Boolean save = userService.register(userDto,url);
+		Boolean save = authService.register(userDto,url);
 		
 		if(save) {
 			return CommonGenericResponseUtil.createBuildResponseMessage("user register", HttpStatus.CREATED);
@@ -39,7 +39,7 @@ public class UserAuthController {
 	
 	@PostMapping("/login")
 	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception{
-		LoginResponse loginResponse = userService.login(loginRequest);
+		LoginResponse loginResponse = authService.login(loginRequest);
 		
 		if(ObjectUtils.isEmpty(loginResponse)) {
 			return CommonGenericResponseUtil.createErrorResponseMessage("Invalid credential", HttpStatus.BAD_REQUEST);

@@ -1,16 +1,8 @@
 package com.code.services;
 
-import com.code.dto.LoginRequest;
-import com.code.dto.LoginResponse;
-import com.code.dto.UserDTO;
+import com.code.dto.PasswordChangeRequest;
 
 public interface UserService {
 
-	public Boolean register(UserDTO userDTO, String url) throws Exception;
-
-	public LoginResponse login(LoginRequest loginRequest);
-
-	
-
-	
+	public void changePassword(PasswordChangeRequest changeRequest);
 }
