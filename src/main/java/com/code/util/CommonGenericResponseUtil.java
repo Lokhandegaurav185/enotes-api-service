@@ -3,7 +3,10 @@ package com.code.util;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.code.config.security.CustomUserDetails;
+import com.code.entity.User;
 import com.code.handler.GenericResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -65,5 +68,10 @@ public class CommonGenericResponseUtil {
 		String apiUrl = request.getRequestURL().toString();
 		apiUrl = apiUrl.replace(request.getServletPath(),"");
 		return apiUrl;
+	}
+	
+	public static User getLoggedInUser() {
+		CustomUserDetails logUser=(CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		return logUser.getUser();
 	}
 }
