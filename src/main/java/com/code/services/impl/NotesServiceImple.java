@@ -33,12 +33,14 @@ import com.code.dto.NotesResponse;
 import com.code.entity.FavouriteNotes;
 import com.code.entity.FileDetails;
 import com.code.entity.Notes;
+import com.code.entity.User;
 import com.code.exception.ResourceNotFoundException;
 import com.code.respository.CategoryRepository;
 import com.code.respository.FavoritesNoteRepository;
 import com.code.respository.FileRepository;
 import com.code.respository.NotesRepository;
 import com.code.services.NotesServices;
+import com.code.util.CommonGenericResponseUtil;
 
 import tools.jackson.databind.ObjectMapper;
 
@@ -175,11 +177,11 @@ public class NotesServiceImple implements NotesServices{
 		
 	}
 	
-	public NotesResponse getAllNotesByUser(Integer userId,Integer pageNo, Integer pageSize) {
+	public NotesResponse getAllNotesByUser(Integer pageNo, Integer pageSize) {
 		
 		Pageable pageable = PageRequest.of(pageNo,pageSize);
-		
-		Page<Notes> pageNotes = notesRepository.findByCreatedByAndIsDeletedFalse(userId,pageable);
+		User userId = CommonGenericResponseUtil.getLoggedInUser();
+		Page<Notes> pageNotes = notesRepository.findByCreatedByAndIsDeletedFalse(userId.getId(),pageable);
 		
 		List<NotesDTO> notesDto = pageNotes.get().map(n -> mapper.map(n, NotesDTO.class)).toList();
 		
@@ -214,8 +216,9 @@ public class NotesServiceImple implements NotesServices{
 	}
 
 
-	public List<NotesDTO> getUserRecycleBinNotes(Integer userId) {
-		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId);
+	public List<NotesDTO> getUserRecycleBinNotes() {
+		User userId = CommonGenericResponseUtil.getLoggedInUser();
+		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId.getId());
 		List<NotesDTO> NotesDtoList = recycleNotes.stream().map(n->mapper.map(n, NotesDTO.class)).toList();
 		return NotesDtoList;
 	}
@@ -231,8 +234,9 @@ public class NotesServiceImple implements NotesServices{
 	}
 
 
-	public void deleteRecycleBin(int userId) {
-		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId);
+	public void deleteRecycleBin() {
+		User userId = CommonGenericResponseUtil.getLoggedInUser();
+		List<Notes> recycleNotes =notesRepository.findByCreatedByAndIsDeletedTrue(userId.getId());
 		if(!CollectionUtils.isEmpty(recycleNotes)) {
 			notesRepository.deleteAll(recycleNotes);
 		}
@@ -240,9 +244,9 @@ public class NotesServiceImple implements NotesServices{
 
 
 	public void favoriteNotes(Integer noteId) throws Exception {
-		int userId=2;
+		User userId = CommonGenericResponseUtil.getLoggedInUser();
 		Notes notes = notesRepository.findById(noteId).orElseThrow(()-> new ResourceNotFoundException("Notes not found and id is invalid"));
-		FavouriteNotes favouriteNotes = FavouriteNotes.builder().note(notes).userId(userId).build();
+		FavouriteNotes favouriteNotes = FavouriteNotes.builder().note(notes).userId(userId.getId()).build();
 		favoritesNoteRepository.save(favouriteNotes);
 	}
 
@@ -256,8 +260,8 @@ public class NotesServiceImple implements NotesServices{
 
 	@Override
 	public List<FavoritesNotesDTO> getUserFavoriteNotes() {
-		int userId=2;
-		List<FavouriteNotes> favoriteNotes = favoritesNoteRepository.findByUserId(userId);
+		User userId = CommonGenericResponseUtil.getLoggedInUser();
+		List<FavouriteNotes> favoriteNotes = favoritesNoteRepository.findByUserId(userId.getId());
 		return favoriteNotes.stream().map(fn->mapper.map(fn, FavoritesNotesDTO.class)).toList();
 	}
 
