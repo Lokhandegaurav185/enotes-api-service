@@ -197,6 +197,28 @@ public class NotesServiceImple implements NotesServices{
 		return notesResponse;
 	}
 	
+	
+	@Override
+	public NotesResponse getSearchUserNotes(Integer pageNo, Integer pageSize, String keyword) {
+		Integer userId = CommonGenericResponseUtil.getLoggedInUser().getId();
+		Pageable pageable = PageRequest.of(pageNo,pageSize);
+		Page<Notes> pageNotes = notesRepository.searchNotes(keyword,userId,pageable);
+		
+		List<NotesDTO> notesDto = pageNotes.get().map(n -> mapper.map(n, NotesDTO.class)).toList();
+		
+		NotesResponse notesResponse = NotesResponse.builder()
+				.notes(notesDto)
+				.pageNo(pageNotes.getNumber())
+				.pageSize(pageNotes.getSize())
+				.totalElements(pageNotes.getTotalElements())
+				.totalPages(pageNotes.getTotalPages())
+				.isFirst(pageNotes.isFirst())
+				.isLast(pageNotes.isLast())
+				.build();
+		return notesResponse;
+	}
+
+
 	public void softDeleteNotes(Integer id) throws Exception {
 		Notes notes = notesRepository.findById(id)
 		  .orElseThrow(()->new ResourceNotFoundException("Notes not found"));

@@ -78,6 +78,18 @@ public class NotesController {
 		return CommonGenericResponseUtil.createBuildResponse(getNotes, HttpStatus.OK);
 	}
 	
+	@GetMapping("/search")
+	@PreAuthorize("hasRole('USER')")
+	public ResponseEntity<?> getNotesSearchByUser(@RequestParam(name="key",defaultValue = "")String keyword,
+												@RequestParam(name="pageNo",defaultValue = "0")Integer pageNo,
+												@RequestParam(name="pageNo",defaultValue = "5") Integer pageSize){
+		NotesResponse getNotes = notesServices.getSearchUserNotes(pageNo,pageSize,keyword);
+//		if(CollectionUtils.isEmpty(getNotes)) {
+//			return ResponseEntity.noContent().build();
+//		}
+		return CommonGenericResponseUtil.createBuildResponse(getNotes, HttpStatus.OK);
+	}
+	
 	@GetMapping("/delete/{id}")
 	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<?> deleteNotes(@PathVariable Integer id) throws Exception{
