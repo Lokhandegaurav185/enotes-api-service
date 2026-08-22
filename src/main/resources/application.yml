@@ -1,0 +1,169 @@
+spring:
+  application:
+    name: Enotes_Api_Services
+  profiles:
+    active: uat
+---
+# for dev envirnoment
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_dev
+    username: root
+    password: 'Lokhande#123'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    # database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gaurav.place2001@gmail.com
+    password: 'wpij rjpq aldu dwyx'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+file:
+  upload:
+    path: notes/
+
+jwt:
+  secret: 'ThisIsMyVeryStrongSecretKeyForJWTAuthentication123456'
+---
+# for test envirnoment
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_test
+    username: root
+    password: 'Lokhande#123'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    # database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gaurav.place2001@gmail.com
+    password: 'wpij rjpq aldu dwyx'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+file:
+  upload:
+    path: notes/
+
+jwt:
+  secret: 'ThisIsMyVeryStrongSecretKeyForJWTAuthentication123456'
+---
+# for uat envirnoment
+spring:
+  config:
+   activate:
+    on-profile: uat
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_uat
+    username: root
+    password: 'Lokhande#123'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    # database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gaurav.place2001@gmail.com
+    password: 'wpij rjpq aldu dwyx'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+file:
+  upload:
+    path: notes/
+
+jwt:
+  secret: 'ThisIsMyVeryStrongSecretKeyForJWTAuthentication123456'
+---
+#for prod envirnoment
+spring:
+  config:
+   activate:
+    on-profile: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/enotes_prod
+    username: root
+    password: 'Lokhande#123'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    # database-platform: org.hibernate.dialect.MySQL5Dialect
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gaurav.place2001@gmail.com
+    password: 'wpij rjpq aldu dwyx'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+file:
+  upload:
+    path: notes/
+
+jwt:
+  secret: 'ThisIsMyVeryStrongSecretKeyForJWTAuthentication123456'
