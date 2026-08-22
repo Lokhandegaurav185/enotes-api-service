@@ -18,7 +18,7 @@ import com.code.services.UserService;
 import com.code.util.CommonGenericResponseUtil;
 
 @RestController
-@RequestMapping("/api/v1/user")
+
 public class UserController {
 
 	@Autowired
