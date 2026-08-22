@@ -17,18 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.code.dto.TodoDTO;
+import com.code.endpoints.TodoControllerEndpoint;
 import com.code.entity.Todo;
 import com.code.services.TodoService;
 import com.code.util.CommonGenericResponseUtil;
 
 @RestController
-@RequestMapping("/api/v1/todo")
-public class TodoController {
+public class TodoController implements TodoControllerEndpoint{
+	
 	@Autowired
 	private TodoService todoService;
 	
-	@PostMapping("/save")
-	@PreAuthorize("hasRole('USER')")
+	@Override
 	public ResponseEntity<?> saveTodo(@RequestBody TodoDTO todo ) throws Exception{
 		Boolean saveTodo = todoService.saveTodo(todo);
 		if(saveTodo) {
@@ -36,8 +36,8 @@ public class TodoController {
 		}
 		return CommonGenericResponseUtil.createErrorResponseMessage("Todo Not save", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('USER')")
+
+	@Override
 	public ResponseEntity<?> getTodoById(@PathVariable Integer id ) throws Exception{
 		 TodoDTO todoById = todoService.getTodoById(id);
 		
@@ -45,8 +45,8 @@ public class TodoController {
 		
 		
 	}
-	@GetMapping("/list")
-	@PreAuthorize("hasRole('USER')")
+	
+	@Override
 	public ResponseEntity<?> getTodoByUser(){
 		List<TodoDTO> ListTodo = todoService.getTodoByUser();
 		if(CollectionUtils.isEmpty(ListTodo)) {

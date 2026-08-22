@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.code.dto.PasswordResetRequest;
+import com.code.endpoints.HomeControllerEndpoint;
 import com.code.services.HomeService;
 import com.code.services.UserService;
 import com.code.util.CommonGenericResponseUtil;
@@ -18,8 +19,7 @@ import com.code.util.CommonGenericResponseUtil;
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/api/v1/home")
-public class HomeController {
+public class HomeController implements HomeControllerEndpoint{
 	
 	@Autowired
 	private HomeService homeService;
@@ -27,7 +27,7 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/verify")
+	@Override
 	public ResponseEntity<?> register(@RequestParam Integer uid, @RequestParam String code ) throws Exception{
 		Boolean verifyAccount = homeService.verifyAccount(uid,code);
 		if(verifyAccount) {
@@ -36,19 +36,19 @@ public class HomeController {
 		return CommonGenericResponseUtil.createErrorResponseMessage("Invalid verification Link", HttpStatus.BAD_REQUEST);
 	}
 	
-	@GetMapping("/sendEmailReset")
+	@Override
 	public ResponseEntity<?> sendEmailForPasswordReset(@RequestParam String email, HttpServletRequest request) throws Exception {
 		userService.sendEmailPasswordReset(email,request);
 		return CommonGenericResponseUtil.createBuildResponseMessage("Send Email success!! check email for reset password", HttpStatus.OK);
 	}
 	
-	@GetMapping("/verifyPasswordLink")
+	@Override
 	public ResponseEntity<?> verifyPasswordResetLink(@RequestParam Integer uid,@RequestParam String code) throws Exception {
 		userService.verifyPasswordResetLink(uid,code);
 		return CommonGenericResponseUtil.createBuildResponseMessage("verification success", HttpStatus.OK);
 		
 	}
-	@PostMapping("/resetPassword")
+	@Override
 	public ResponseEntity<?> resetPassword(@RequestBody PasswordResetRequest passwordResetRequest) throws Exception {
 		userService.resetPassword(passwordResetRequest);
 		return CommonGenericResponseUtil.createBuildResponseMessage("Password Request success", HttpStatus.OK);

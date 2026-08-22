@@ -14,19 +14,19 @@ import com.code.dto.LoginRequest;
 import com.code.dto.LoginResponse;
 import com.code.dto.TodoDTO;
 import com.code.dto.UserDTO;
+import com.code.endpoints.UserAuthControllerEndpoint;
 import com.code.services.AuthService;
 import com.code.util.CommonGenericResponseUtil;
 
 import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/api/v1/auth")
-public class UserAuthController {
+public class UserAuthController implements UserAuthControllerEndpoint{
 	
 	@Autowired
 	private AuthService authService;
 	
-	@PostMapping("/save")
+	@Override
 	public ResponseEntity<?> register(@RequestBody UserDTO userDto, HttpServletRequest request) throws Exception{
 		String url = CommonGenericResponseUtil.getUrl(request);
 		Boolean save = authService.register(userDto,url);
@@ -37,7 +37,7 @@ public class UserAuthController {
 		return CommonGenericResponseUtil.createErrorResponseMessage("user Not register", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PostMapping("/login")
+	@Override
 	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception{
 		LoginResponse loginResponse = authService.login(loginRequest);
 		

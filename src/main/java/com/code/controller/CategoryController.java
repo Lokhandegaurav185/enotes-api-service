@@ -19,18 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.code.dto.CategoryDTO;
 import com.code.dto.CategoryResponse;
+import com.code.endpoints.CategoryControllerEndpoint;
 import com.code.entity.Category;
 import com.code.services.CategoryService;
 import com.code.util.CommonGenericResponseUtil;
 
 @RestController
-@RequestMapping("/api/v1/category")
-public class CategoryController {
+public class CategoryController implements CategoryControllerEndpoint{
 	@Autowired
 	public CategoryService categoryService;
 	
-	@PostMapping("/saveCategory")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> saveCategory(@RequestBody CategoryDTO categoryDTO){
 		Boolean saveCategory=categoryService.saveCategory(categoryDTO);
 		if(saveCategory) {
@@ -43,8 +42,7 @@ public class CategoryController {
 		}
 	}
 	
-	@GetMapping("/getAllCategory")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> getAllCategory(){
 		List<CategoryDTO> allCategory = categoryService.getAllCategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
@@ -56,8 +54,7 @@ public class CategoryController {
 		}
 	}
 	
-	@GetMapping("/active-category")
-	@PreAuthorize("hasAnyRole('USER','ADMIN')")
+	@Override
 	public ResponseEntity<?> getActiveCategory(){
 		List<CategoryResponse> allCategory = categoryService.getActiveCategory();
 		if(CollectionUtils.isEmpty(allCategory)) {
@@ -68,8 +65,7 @@ public class CategoryController {
 //			return new ResponseEntity<>(allCategory,HttpStatus.OK);	
 		}
 	}
-	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> getCategoryByID(@PathVariable Integer id){
 		CategoryDTO categoryDTO=categoryService.getCategoryByID(id);
 		if(ObjectUtils.isEmpty(categoryDTO)) {
@@ -80,8 +76,7 @@ public class CategoryController {
 //		return new ResponseEntity<>(categoryDTO,HttpStatus.OK);
 	}
 	
-	@DeleteMapping("/{id}")
-	@PreAuthorize("hasRole('ADMIN')")
+	@Override
 	public ResponseEntity<?> deleteCategoryByID(@PathVariable Integer id){
 		boolean deleted=categoryService.deleteCategoryByID(id);
 		if(deleted) {
