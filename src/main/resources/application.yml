@@ -3,7 +3,7 @@ spring:
     name: Enotes_Api_Services
   profiles:
     active: dev
----
+--- 
 # for dev envirnoment
 spring:
   config:
