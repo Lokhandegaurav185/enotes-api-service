@@ -2,7 +2,7 @@ spring:
   application:
     name: Enotes_Api_Services
   profiles:
-    active: test
+    active: uat
 ---
 # for dev envirnoment
 spring:
