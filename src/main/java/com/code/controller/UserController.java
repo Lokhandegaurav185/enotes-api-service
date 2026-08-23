@@ -35,7 +35,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/changePassword")
-	public ResponseEntity<?> changePassword(@RequestBody PasswordChangeRequest passwordRequest){
+	public ResponseEntity<?> changePassword(PasswordChangeRequest passwordRequest){
 		userService.changePassword(passwordRequest);
 		return CommonGenericResponseUtil.createBuildResponseMessage("Change Password Successful", HttpStatus.OK);
 	}		

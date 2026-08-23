@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.code.dto.TodoDTO;
-
+import static com.code.util.Contants.*;
 
 @RequestMapping("/api/v1/todo")
 public interface TodoControllerEndpoint {
 	@PostMapping("/save")
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize(ROLE_USER)
 	public ResponseEntity<?> saveTodo(@RequestBody TodoDTO todo ) throws Exception;
 	
 	@GetMapping("/{id}")
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize(ROLE_USER)
 	public ResponseEntity<?> getTodoById(@PathVariable Integer id ) throws Exception;
 	
 	@GetMapping("/list")
-	@PreAuthorize("hasRole('USER')")
+	@PreAuthorize(ROLE_USER)
 	public ResponseEntity<?> getTodoByUser();
 }

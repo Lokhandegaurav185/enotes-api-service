@@ -27,7 +27,7 @@ public class UserAuthController implements UserAuthControllerEndpoint{
 	private AuthService authService;
 	
 	@Override
-	public ResponseEntity<?> register(@RequestBody UserDTO userDto, HttpServletRequest request) throws Exception{
+	public ResponseEntity<?> register(UserDTO userDto, HttpServletRequest request) throws Exception{
 		String url = CommonGenericResponseUtil.getUrl(request);
 		Boolean save = authService.register(userDto,url);
 		
@@ -38,7 +38,7 @@ public class UserAuthController implements UserAuthControllerEndpoint{
 	}
 	
 	@Override
-	public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) throws Exception{
+	public ResponseEntity<?> login(LoginRequest loginRequest) throws Exception{
 		LoginResponse loginResponse = authService.login(loginRequest);
 		
 		if(ObjectUtils.isEmpty(loginResponse)) {
