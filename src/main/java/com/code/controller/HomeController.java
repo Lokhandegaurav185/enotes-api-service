@@ -28,7 +28,7 @@ public class HomeController implements HomeControllerEndpoint{
 	private UserService userService;
 	
 	@Override
-	public ResponseEntity<?> register(@RequestParam Integer uid, @RequestParam String code ) throws Exception{
+	public ResponseEntity<?> register(Integer uid,String code ) throws Exception{
 		Boolean verifyAccount = homeService.verifyAccount(uid,code);
 		if(verifyAccount) {
 			return CommonGenericResponseUtil.createBuildResponseMessage("Account verification success", HttpStatus.OK);
@@ -37,19 +37,19 @@ public class HomeController implements HomeControllerEndpoint{
 	}
 	
 	@Override
-	public ResponseEntity<?> sendEmailForPasswordReset(@RequestParam String email, HttpServletRequest request) throws Exception {
+	public ResponseEntity<?> sendEmailForPasswordReset(String email, HttpServletRequest request) throws Exception {
 		userService.sendEmailPasswordReset(email,request);
 		return CommonGenericResponseUtil.createBuildResponseMessage("Send Email success!! check email for reset password", HttpStatus.OK);
 	}
 	
 	@Override
-	public ResponseEntity<?> verifyPasswordResetLink(@RequestParam Integer uid,@RequestParam String code) throws Exception {
+	public ResponseEntity<?> verifyPasswordResetLink(Integer uid, String code) throws Exception {
 		userService.verifyPasswordResetLink(uid,code);
 		return CommonGenericResponseUtil.createBuildResponseMessage("verification success", HttpStatus.OK);
 		
 	}
 	@Override
-	public ResponseEntity<?> resetPassword(@RequestBody PasswordResetRequest passwordResetRequest) throws Exception {
+	public ResponseEntity<?> resetPassword(PasswordResetRequest passwordResetRequest) throws Exception {
 		userService.resetPassword(passwordResetRequest);
 		return CommonGenericResponseUtil.createBuildResponseMessage("Password Request success", HttpStatus.OK);
 	}
