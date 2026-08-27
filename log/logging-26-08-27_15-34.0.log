@@ -1,0 +1,30 @@
+2026-27-34 15:34:54.886 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Starting EnotesApiServicesApplication using Java 21.0.6 with PID 19140 (D:\SpringBootProject\Enotes_Api_Services\target\classes started by Admin in D:\SpringBootProject\Enotes_Api_Services)
+2026-27-34 15:34:54.892 INFO  [restartedMain] c.code.EnotesApiServicesApplication - The following 1 profile is active: "dev"
+2026-27-34 15:34:54.986 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-27-34 15:34:54.987 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-27-34 15:34:55.686 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.3.Final
+2026-27-34 15:34:56.603 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-27-34 15:34:56.697 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 81 ms. Found 7 JPA repository interfaces.
+2026-27-34 15:34:57.807 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-27-34 15:34:57.831 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-27-34 15:34:57.835 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-27-34 15:34:57.835 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-27-34 15:34:57.918 INFO  [restartedMain] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2926 ms
+2026-27-34 15:34:58.166 INFO  [restartedMain] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-27-34 15:34:58.266 INFO  [restartedMain] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-27-34 15:34:58.868 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-27-34 15:34:58.911 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-27-34 15:34:59.503 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@bc253f4
+2026-27-34 15:34:59.507 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-27-34 15:34:59.658 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/enotes_dev]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.36
+	Default catalog/schema: enotes_dev/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown

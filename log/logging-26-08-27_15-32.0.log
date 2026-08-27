@@ -1,0 +1,184 @@
+2026-27-32 15:32:31.282 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2026-27-32 15:32:31.286 INFO  [Thread-5] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-27-32 15:32:31.288 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-27-32 15:32:31.302 INFO  [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-27-32 15:32:31.303 INFO  [Thread-5] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-27-32 15:32:31.318 INFO  [Thread-5] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-32 15:32:31.321 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
+2026-27-32 15:32:31.326 INFO  [Thread-5] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2026-27-32 15:32:31.512 ERROR [restartedMain] o.s.boot.SpringApplication - Application run failed
+while scanning for the next token
+found character '\t(TAB)' that cannot start any token. (Do not use \t(TAB) for indentation)
+ in 'reader', line 28, column 1:
+    	swagger-ui:
+    ^
+
+	at org.yaml.snakeyaml.scanner.ScannerImpl.fetchMoreTokens(ScannerImpl.java:460)
+	at org.yaml.snakeyaml.scanner.ScannerImpl.checkToken(ScannerImpl.java:239)
+	at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingValue.produce(ParserImpl.java:669)
+	at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:161)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:57)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:43)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:136)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:116)
+	at org.yaml.snakeyaml.composer.Composer.composeScalarNode(Composer.java:249)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:214)
+	at org.yaml.snakeyaml.composer.Composer.composeKeyNode(Composer.java:386)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:357)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:329)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:218)
+	at org.yaml.snakeyaml.composer.Composer.getNode(Composer.java:141)
+	at org.yaml.snakeyaml.constructor.BaseConstructor.getData(BaseConstructor.java:163)
+	at org.springframework.boot.env.OriginTrackedYamlLoader$OriginTrackingConstructor.getData(OriginTrackedYamlLoader.java:100)
+	at org.yaml.snakeyaml.Yaml$1.next(Yaml.java:530)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:203)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:169)
+	at org.springframework.boot.env.OriginTrackedYamlLoader.load(OriginTrackedYamlLoader.java:85)
+	at org.springframework.boot.env.YamlPropertySourceLoader.load(YamlPropertySourceLoader.java:50)
+	at org.springframework.boot.env.PropertySourceLoader.load(PropertySourceLoader.java:71)
+	at org.springframework.boot.context.config.StandardConfigDataLoader.load(StandardConfigDataLoader.java:55)
+	at org.springframework.boot.context.config.StandardConfigDataLoader.load(StandardConfigDataLoader.java:36)
+	at org.springframework.boot.context.config.ConfigDataLoaders.load(ConfigDataLoaders.java:100)
+	at org.springframework.boot.context.config.ConfigDataImporter.load(ConfigDataImporter.java:133)
+	at org.springframework.boot.context.config.ConfigDataImporter.resolveAndLoad(ConfigDataImporter.java:88)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentContributors.withProcessedImports(ConfigDataEnvironmentContributors.java:130)
+	at org.springframework.boot.context.config.ConfigDataEnvironment.processInitial(ConfigDataEnvironment.java:253)
+	at org.springframework.boot.context.config.ConfigDataEnvironment.processAndApply(ConfigDataEnvironment.java:240)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor.postProcessEnvironment(ConfigDataEnvironmentPostProcessor.java:97)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor.postProcessEnvironment(ConfigDataEnvironmentPostProcessor.java:90)
+	at org.springframework.boot.support.EnvironmentPostProcessorApplicationListener.onApplicationEnvironmentPreparedEvent(EnvironmentPostProcessorApplicationListener.java:137)
+	at org.springframework.boot.support.EnvironmentPostProcessorApplicationListener.onApplicationEvent(EnvironmentPostProcessorApplicationListener.java:120)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:180)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:173)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:151)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:137)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:82)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$0(SpringApplicationRunListeners.java:66)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:123)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:117)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:356)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.code.EnotesApiServicesApplication.main(EnotesApiServicesApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+2026-27-32 15:32:42.416 ERROR [restartedMain] o.s.boot.SpringApplication - Application run failed
+while scanning for the next token
+found character '\t(TAB)' that cannot start any token. (Do not use \t(TAB) for indentation)
+ in 'reader', line 28, column 1:
+    	swagger-ui:
+    ^
+
+	at org.yaml.snakeyaml.scanner.ScannerImpl.fetchMoreTokens(ScannerImpl.java:460)
+	at org.yaml.snakeyaml.scanner.ScannerImpl.checkToken(ScannerImpl.java:239)
+	at org.yaml.snakeyaml.parser.ParserImpl$ParseBlockMappingValue.produce(ParserImpl.java:669)
+	at org.yaml.snakeyaml.parser.ParserImpl.peekEvent(ParserImpl.java:161)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:57)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector$1.peek(CommentEventsCollector.java:43)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:136)
+	at org.yaml.snakeyaml.comments.CommentEventsCollector.collectEvents(CommentEventsCollector.java:116)
+	at org.yaml.snakeyaml.composer.Composer.composeScalarNode(Composer.java:249)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:214)
+	at org.yaml.snakeyaml.composer.Composer.composeKeyNode(Composer.java:386)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingChildren(Composer.java:357)
+	at org.yaml.snakeyaml.composer.Composer.composeMappingNode(Composer.java:329)
+	at org.yaml.snakeyaml.composer.Composer.composeNode(Composer.java:218)
+	at org.yaml.snakeyaml.composer.Composer.getNode(Composer.java:141)
+	at org.yaml.snakeyaml.constructor.BaseConstructor.getData(BaseConstructor.java:163)
+	at org.springframework.boot.env.OriginTrackedYamlLoader$OriginTrackingConstructor.getData(OriginTrackedYamlLoader.java:100)
+	at org.yaml.snakeyaml.Yaml$1.next(Yaml.java:530)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:203)
+	at org.springframework.beans.factory.config.YamlProcessor.process(YamlProcessor.java:169)
+	at org.springframework.boot.env.OriginTrackedYamlLoader.load(OriginTrackedYamlLoader.java:85)
+	at org.springframework.boot.env.YamlPropertySourceLoader.load(YamlPropertySourceLoader.java:50)
+	at org.springframework.boot.env.PropertySourceLoader.load(PropertySourceLoader.java:71)
+	at org.springframework.boot.context.config.StandardConfigDataLoader.load(StandardConfigDataLoader.java:55)
+	at org.springframework.boot.context.config.StandardConfigDataLoader.load(StandardConfigDataLoader.java:36)
+	at org.springframework.boot.context.config.ConfigDataLoaders.load(ConfigDataLoaders.java:100)
+	at org.springframework.boot.context.config.ConfigDataImporter.load(ConfigDataImporter.java:133)
+	at org.springframework.boot.context.config.ConfigDataImporter.resolveAndLoad(ConfigDataImporter.java:88)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentContributors.withProcessedImports(ConfigDataEnvironmentContributors.java:130)
+	at org.springframework.boot.context.config.ConfigDataEnvironment.processInitial(ConfigDataEnvironment.java:253)
+	at org.springframework.boot.context.config.ConfigDataEnvironment.processAndApply(ConfigDataEnvironment.java:240)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor.postProcessEnvironment(ConfigDataEnvironmentPostProcessor.java:97)
+	at org.springframework.boot.context.config.ConfigDataEnvironmentPostProcessor.postProcessEnvironment(ConfigDataEnvironmentPostProcessor.java:90)
+	at org.springframework.boot.support.EnvironmentPostProcessorApplicationListener.onApplicationEnvironmentPreparedEvent(EnvironmentPostProcessorApplicationListener.java:137)
+	at org.springframework.boot.support.EnvironmentPostProcessorApplicationListener.onApplicationEvent(EnvironmentPostProcessorApplicationListener.java:120)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:180)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:173)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:151)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:133)
+	at org.springframework.boot.context.event.EventPublishingRunListener.multicastInitialEvent(EventPublishingRunListener.java:137)
+	at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:82)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$environmentPrepared$0(SpringApplicationRunListeners.java:66)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:123)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:117)
+	at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:65)
+	at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:356)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354)
+	at com.code.EnotesApiServicesApplication.main(EnotesApiServicesApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:52)
+2026-27-32 15:32:55.388 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Starting EnotesApiServicesApplication using Java 21.0.6 with PID 16408 (D:\SpringBootProject\Enotes_Api_Services\target\classes started by Admin in D:\SpringBootProject\Enotes_Api_Services)
+2026-27-32 15:32:55.389 INFO  [restartedMain] c.code.EnotesApiServicesApplication - The following 1 profile is active: "dev"
+2026-27-32 15:32:55.761 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-27-32 15:32:55.800 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 36 ms. Found 7 JPA repository interfaces.
+2026-27-32 15:32:56.018 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-27-32 15:32:56.022 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-27-32 15:32:56.022 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-27-32 15:32:56.023 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-27-32 15:32:56.056 INFO  [restartedMain] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 664 ms
+2026-27-32 15:32:56.127 INFO  [restartedMain] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-27-32 15:32:56.172 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-27-32 15:32:56.174 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Starting...
+2026-27-32 15:32:56.192 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76f7993d
+2026-27-32 15:32:56.193 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Start completed.
+2026-27-32 15:32:56.196 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/enotes_dev]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.36
+	Default catalog/schema: enotes_dev/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-27-32 15:32:56.686 INFO  [restartedMain] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-27-32 15:32:56.688 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-27-32 15:32:56.956 WARN  [restartedMain] o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userServiceImple' defined in file [D:\SpringBootProject\Enotes_Api_Services\target\classes\com\code\services\impl\UserServiceImple.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'emailService': Unsatisfied dependency expressed through field 'mailSender': No qualifying bean of type 'org.springframework.mail.javamail.JavaMailSender' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2026-27-32 15:32:56.956 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-32 15:32:56.957 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown initiated...
+2026-27-32 15:32:56.961 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-3 - Shutdown completed.
+2026-27-32 15:32:56.961 INFO  [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-27-32 15:32:56.972 INFO  [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-27-32 15:32:56.985 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field mailSender in com.code.services.impl.EmailService required a bean of type 'org.springframework.mail.javamail.JavaMailSender' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.mail.javamail.JavaMailSender' in your configuration.
+

@@ -1,0 +1,8 @@
+2026-27-04 11:04:51.992 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 103 class path changes (0 additions, 4 deletions, 99 modifications)
+2026-27-04 11:04:51.997 INFO  [Thread-17] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-27-04 11:04:51.998 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-27-04 11:04:52.007 INFO  [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-27-04 11:04:52.008 INFO  [Thread-17] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-27-04 11:04:52.013 INFO  [Thread-17] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-04 11:04:52.015 INFO  [Thread-17] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2026-27-04 11:04:52.022 INFO  [Thread-17] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.

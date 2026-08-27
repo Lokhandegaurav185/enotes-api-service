@@ -1,0 +1,80 @@
+2026-27-56 10:56:39.723 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 103 class path changes (0 additions, 103 deletions, 0 modifications)
+2026-27-56 10:56:39.734 INFO  [Thread-9] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-27-56 10:56:39.737 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8080"]
+2026-27-56 10:56:39.755 INFO  [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-27-56 10:56:39.756 INFO  [Thread-9] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8080"]
+2026-27-56 10:56:39.788 INFO  [Thread-9] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-56 10:56:39.792 INFO  [Thread-9] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2026-27-56 10:56:39.804 INFO  [Thread-9] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2026-27-56 10:56:43.329 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Starting EnotesApiServicesApplication using Java 21.0.6 with PID 2988 (D:\SpringBootProject\Enotes_Api_Services\target\classes started by Admin in D:\SpringBootProject\Enotes_Api_Services)
+2026-27-56 10:56:43.329 INFO  [restartedMain] c.code.EnotesApiServicesApplication - The following 1 profile is active: "dev"
+2026-27-56 10:56:43.608 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-27-56 10:56:43.639 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 7 JPA repository interfaces.
+2026-27-56 10:56:43.810 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-27-56 10:56:43.813 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-27-56 10:56:43.813 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-27-56 10:56:43.844 INFO  [restartedMain] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 512 ms
+2026-27-56 10:56:43.958 INFO  [restartedMain] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-27-56 10:56:44.012 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-27-56 10:56:44.014 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Starting...
+2026-27-56 10:56:44.039 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@567793d4
+2026-27-56 10:56:44.040 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Start completed.
+2026-27-56 10:56:44.042 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/enotes_dev]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.36
+	Default catalog/schema: enotes_dev/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-27-56 10:56:44.241 INFO  [restartedMain] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-27-56 10:56:44.242 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-27-56 10:56:44.700 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-27-56 10:56:44.701 WARN  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-27-56 10:56:44.788 WARN  [restartedMain] o.s.b.j.a.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-27-56 10:56:45.132 INFO  [restartedMain] o.s.v.b.OptionalValidatorFactoryBean - Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-27-56 10:56:45.452 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-27-56 10:56:45.457 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Started EnotesApiServicesApplication in 2.183 seconds (process running for 574.564)
+2026-27-56 10:56:45.458 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2026-27-56 10:56:47.985 INFO  [RMI TCP Connection(13)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.
+2026-27-56 10:56:47.986 INFO  [RMI TCP Connection(13)-127.0.0.1] o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-27-56 10:56:47.994 INFO  [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-27-56 10:56:47.999 INFO  [RMI TCP Connection(13)-127.0.0.1] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-56 10:56:48.000 INFO  [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown initiated...
+2026-27-56 10:56:48.007 INFO  [RMI TCP Connection(13)-127.0.0.1] com.zaxxer.hikari.HikariDataSource - HikariPool-5 - Shutdown completed.
+2026-27-56 10:56:52.562 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Starting EnotesApiServicesApplication using Java 21.0.6 with PID 15184 (D:\SpringBootProject\Enotes_Api_Services\target\classes started by Admin in D:\SpringBootProject\Enotes_Api_Services)
+2026-27-56 10:56:52.566 INFO  [restartedMain] c.code.EnotesApiServicesApplication - The following 1 profile is active: "dev"
+2026-27-56 10:56:52.667 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-27-56 10:56:52.668 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-27-56 10:56:54.118 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-27-56 10:56:54.223 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 7 JPA repository interfaces.
+2026-27-56 10:56:55.363 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-27-56 10:56:55.384 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-27-56 10:56:55.387 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-27-56 10:56:55.388 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-27-56 10:56:55.465 INFO  [restartedMain] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 2797 ms
+2026-27-56 10:56:55.775 INFO  [restartedMain] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-27-56 10:56:55.862 INFO  [restartedMain] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-27-56 10:56:56.492 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-27-56 10:56:56.534 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-27-56 10:56:57.034 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61a875d6
+2026-27-56 10:56:57.037 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-27-56 10:56:57.188 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/enotes_dev]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.36
+	Default catalog/schema: enotes_dev/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-27-56 10:56:58.852 INFO  [restartedMain] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-27-56 10:56:58.864 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-27-56 10:56:58.991 INFO  [restartedMain] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.

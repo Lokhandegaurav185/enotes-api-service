@@ -24,6 +24,9 @@ import com.code.entity.Category;
 import com.code.services.CategoryService;
 import com.code.util.CommonGenericResponseUtil;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Category APIs", description = "All category apis for admin and users")
 @RestController
 public class CategoryController implements CategoryControllerEndpoint{
 	@Autowired

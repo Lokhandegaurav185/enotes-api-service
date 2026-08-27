@@ -1,0 +1,113 @@
+2026-27-33 15:33:11.881 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Starting EnotesApiServicesApplication using Java 21.0.6 with PID 16408 (D:\SpringBootProject\Enotes_Api_Services\target\classes started by Admin in D:\SpringBootProject\Enotes_Api_Services)
+2026-27-33 15:33:11.883 INFO  [restartedMain] c.code.EnotesApiServicesApplication - The following 1 profile is active: "dev"
+2026-27-33 15:33:12.197 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-27-33 15:33:12.225 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 7 JPA repository interfaces.
+2026-27-33 15:33:12.492 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-27-33 15:33:12.497 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-27-33 15:33:12.498 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-27-33 15:33:12.498 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-27-33 15:33:12.542 INFO  [restartedMain] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 656 ms
+2026-27-33 15:33:12.648 INFO  [restartedMain] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-27-33 15:33:12.716 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-27-33 15:33:12.718 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Starting...
+2026-27-33 15:33:12.745 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@11df5a74
+2026-27-33 15:33:12.745 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Start completed.
+2026-27-33 15:33:12.749 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/enotes_dev]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.36
+	Default catalog/schema: enotes_dev/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-27-33 15:33:13.053 INFO  [restartedMain] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-27-33 15:33:13.055 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-27-33 15:33:13.302 WARN  [restartedMain] o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userServiceImple' defined in file [D:\SpringBootProject\Enotes_Api_Services\target\classes\com\code\services\impl\UserServiceImple.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'emailService': Unsatisfied dependency expressed through field 'mailSender': No qualifying bean of type 'org.springframework.mail.javamail.JavaMailSender' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2026-27-33 15:33:13.303 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-33 15:33:13.304 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown initiated...
+2026-27-33 15:33:13.368 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-4 - Shutdown completed.
+2026-27-33 15:33:13.370 INFO  [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-27-33 15:33:13.383 INFO  [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-27-33 15:33:13.393 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field mailSender in com.code.services.impl.EmailService required a bean of type 'org.springframework.mail.javamail.JavaMailSender' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.mail.javamail.JavaMailSender' in your configuration.
+
+2026-27-33 15:33:27.148 INFO  [restartedMain] c.code.EnotesApiServicesApplication - Starting EnotesApiServicesApplication using Java 21.0.6 with PID 14860 (D:\SpringBootProject\Enotes_Api_Services\target\classes started by Admin in D:\SpringBootProject\Enotes_Api_Services)
+2026-27-33 15:33:27.152 INFO  [restartedMain] c.code.EnotesApiServicesApplication - The following 1 profile is active: "dev"
+2026-27-33 15:33:27.260 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-27-33 15:33:27.260 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-27-33 15:33:28.012 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 9.1.3.Final
+2026-27-33 15:33:29.076 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-27-33 15:33:29.183 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 7 JPA repository interfaces.
+2026-27-33 15:33:30.654 INFO  [restartedMain] o.s.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-27-33 15:33:30.690 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-27-33 15:33:30.693 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-27-33 15:33:30.694 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-27-33 15:33:30.822 INFO  [restartedMain] o.s.b.w.c.s.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 3559 ms
+2026-27-33 15:33:31.143 INFO  [restartedMain] org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-27-33 15:33:31.326 INFO  [restartedMain] org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-27-33 15:33:32.316 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-27-33 15:33:32.391 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-27-33 15:33:33.072 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ba7a0f
+2026-27-33 15:33:33.075 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-27-33 15:33:33.265 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/enotes_dev]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.36
+	Default catalog/schema: enotes_dev/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-27-33 15:33:35.534 INFO  [restartedMain] org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-27-33 15:33:35.546 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-27-33 15:33:35.705 INFO  [restartedMain] o.s.d.j.r.q.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-27-33 15:33:36.326 WARN  [restartedMain] o.s.b.w.s.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'homeController': Unsatisfied dependency expressed through field 'userService': Error creating bean with name 'userServiceImple' defined in file [D:\SpringBootProject\Enotes_Api_Services\target\classes\com\code\services\impl\UserServiceImple.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'emailService': Unsatisfied dependency expressed through field 'mailSender': No qualifying bean of type 'org.springframework.mail.javamail.JavaMailSender' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2026-27-33 15:33:36.328 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-27-33 15:33:36.335 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-27-33 15:33:36.344 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-27-33 15:33:36.349 INFO  [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2026-27-33 15:33:36.371 INFO  [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-27-33 15:33:36.420 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field mailSender in com.code.services.impl.EmailService required a bean of type 'org.springframework.mail.javamail.JavaMailSender' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.mail.javamail.JavaMailSender' in your configuration.
+
